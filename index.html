@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Password Protection Modal -->
+    <div id="passwordModal" class="password-modal active">
+        <div class="password-content">
+            <div class="password-header">
+                <i class="fas fa-lock"></i>
+                <h2>Protected Gallery</h2>
+                <p>Please enter the password to access the image gallery</p>
+            </div>
+            <div class="password-form">
+                <div class="input-group">
+                    <i class="fas fa-key"></i>
+                    <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off">
+                </div>
+                <button id="submitPassword" class="password-btn">
+                    <i class="fas fa-unlock"></i> Access Gallery
+                </button>
+                <div id="passwordError" class="password-error"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Gallery Content (Hidden until password is entered) -->
+    <div id="mainContent" class="main-content">
+        <header>
+            <h1>Dynamic Image Gallery</h1>
+            <div class="view-controls">
+                <button id="galleryMode" class="view-btn active">
+                    <i class="fas fa-th"></i> Gallery Mode
+                </button>
+                <button id="viewMode" class="view-btn">
+                    <i class="fas fa-eye"></i> View Mode
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Gallery Mode -->
+            <div id="galleryContainer" class="gallery-container active">
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Images will be loaded here dynamically -->
+                </div>
+                
+                <!-- Pagination Controls -->
+                <div class="pagination-container">
+                    <div class="pagination-info">
+                        <span id="pageInfo">Page 1 of 1</span>
+                        <span id="imageCount">Showing 1-13 of 13 images</span>
+                    </div>
+                    <div class="pagination-controls">
+                        <button id="firstPage" class="pagination-btn" title="First Page">
+                            <i class="fas fa-angle-double-left"></i>
+                        </button>
+                        <button id="prevPage" class="pagination-btn" title="Previous Page">
+                            <i class="fas fa-angle-left"></i>
+                        </button>
+                        <div class="page-numbers" id="pageNumbers">
+                            <!-- Page numbers will be generated here -->
+                        </div>
+                        <button id="nextPage" class="pagination-btn" title="Next Page">
+                            <i class="fas fa-angle-right"></i>
+                        </button>
+                        <button id="lastPage" class="pagination-btn" title="Last Page">
+                            <i class="fas fa-angle-double-right"></i>
+                        </button>
+                    </div>
+                    <div class="items-per-page">
+                        <label for="itemsPerPage">Items per page:</label>
+                        <select id="itemsPerPage">
+                            <option value="50" selected>50</option>
+                            <option value="75">75</option>
+                            <option value="100">100</option>
+                            <option value="150">150</option>
+                            <option value="200">200</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Mode -->
+            <div id="viewContainer" class="view-container">
+                <div class="viewer-controls">
+                    <button id="prevBtn" class="nav-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="nextBtn" class="nav-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button id="closeViewer" class="close-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="image-viewer">
+                    <img id="viewerImage" src="" alt="Full size image">
+                    <div class="image-info">
+                        <span id="imageCounter">1 / 13</span>
+                        <span id="imageName">Image Name</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Lightbox Modal -->
+        <div id="lightbox" class="lightbox">
+            <div class="lightbox-content">
+                <img id="lightboxImage" src="" alt="Lightbox image">
+                <div class="lightbox-info">
+                    <span id="lightboxCounter">1 / 13</span>
+                    <span id="lightboxName">Image Name</span>
+                </div>
+                <button id="closeLightbox" class="lightbox-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
